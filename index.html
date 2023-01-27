@@ -1,35 +1,4 @@
-const inquirer = require('inquirer')
-
-const questions = [{
-    type: "input",
-    name: "name",
-    message: "What is the team manager's name?"
-},
-{
-    type: "input",
-    name: "id",
-    message: "What is the team manager's id?"
-},
-{
-    type: "input",
-    name: "email",
-    message: "What is the team manager's email?"
-},
-{
-    type: "input",
-    name: "managerNum",
-    message: "What is the team manager's office number?"
-},
-{   
-    type: "list"
-    name: "addMember"
-    message: "Which type of team member would you like to add?"
-    choices: ["Engineer", "intern", "I don't want to add anymore team members"]
-}
-]
-
-const generateHTML = () =>
-`<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
@@ -56,8 +25,4 @@ const generateHTML = () =>
           </div>
     </section>
 
-</body>`
-
-
-
-inquirer.prompt(questions)
+</body>
