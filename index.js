@@ -30,7 +30,79 @@ const commonQuestions = (empType) => {
  }
   
 
+function createManager () {
+    inquirer.prompt([
+        ...commonQuestions("team manager"),
+        {
+            type: "input",
+            name: "managerNum",
+            message: "What is the team manager's office number?"
+        }
+    ])
+        .then(answers => {
+            const newManager = new Manager(answers.name, answers.id, answers.email, answers.managerNum);
+            console.log(newManager);
+            employees.push(newManager);
 
+            addMember();
+        })
+}
+
+function createEngineer() {
+    inquirer.prompt([
+       ...commonQuestions("engineer"),
+        {
+            type: "input",
+            name: "engineerGithub",
+            message: "What is the team engineer's github?"
+        }
+    ])
+        .then(answers => {
+            const newEngineer = new Engineer(answers.name, answers.id, answers.email, answers.engineerGithub);
+
+            employees.push(newEngineer);
+
+            addMember();
+        })
+}
+
+function createIntern() {
+    inquirer.prompt([
+        ...commonQuestions("intern"),
+        {
+            type: "input",
+            name: "internSchool",
+            message: "What is the team intern's school?"
+        }
+    ])
+        .then(answers => {
+            const newIntern = new Intern(answers.name, answers.id, answers.email, answers.internSchool);
+
+            employees.push(newIntern);
+
+            addMember();
+        })
+}
+
+function addMember() {
+    inquirer.prompt([
+        {   
+            type: "list",
+            name: "addMember",
+            message: "Which type of team member would you like to add?",
+            choices: ["Engineer", "Intern", "I don't want to add anymore team members"]
+        }
+    ])
+    .then(answer => {
+        if(answer.addMember == "Engineer") {
+            createEngineer();
+        } else if (answer.addMember == "Intern") {
+            createIntern();
+        } else {
+            generateHTML();
+        }
+    })
+}
 
 function generateHTML() {
     console.log(employees)
