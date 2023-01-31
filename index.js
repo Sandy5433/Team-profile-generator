@@ -10,7 +10,7 @@ function getName(employeeType, val){
     return `what is the ${employeeType}'s ${val}`
 }
 const commonQuestions = (empType) => {
-    let data;
+    let data = [];
     data.push({
         type: "input",
         name: "name",
