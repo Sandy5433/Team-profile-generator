@@ -11,7 +11,7 @@ function generateTemplate (employees) {
     
     <body>
       <header>My Team</header>
-        <section>
+        <section class="content">
             ${
 
                 employees.map(employee => {
@@ -23,7 +23,7 @@ function generateTemplate (employees) {
                     
                     <ul class="list-group list-group-flush">
                       <li class="list-group-item">ID: ${employee.getId()}</li>
-                      <li class="list-group-item">Email: ${employee.getEmail()}</li>
+                      <li class="list-group-item">Email: <a href="mailto:${employee.getEmail()}">${employee.getEmail()}</a></li>
                       ${generateUnique(employee)}
                     </ul>
                   </div>`
@@ -40,7 +40,7 @@ function generateUnique (employee) {
     }
 
     if(employee.getRole() == "Engineer") {
-        return `<li class="list-group-item">Github: ${employee.github}</li>`
+        return `<li class="list-group-item">Github: <a href="https://github.com/${employee.github}"> ${employee.github}</a></li>`
     }
 
     if(employee.getRole() == "Intern") {
