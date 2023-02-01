@@ -16,4 +16,11 @@ describe("Manager", () => {
 
         
     })
+
+    describe("getRole", () => {
+        it("should return the value to Manager", ()=>{
+            const obj = new Manager();
+            expect(obj.getRole()).toEqual("Manager");
+        });
+    })
 })
