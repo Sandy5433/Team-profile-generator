@@ -114,6 +114,4 @@ function generateHTML() {
     })
 }
 
-
-
 createManager();
